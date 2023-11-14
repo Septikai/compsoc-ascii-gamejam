@@ -1,4 +1,5 @@
 ﻿using compsoc_ascii_gamejam.ConsoleOutput;
+using compsoc_ascii_gamejam.Stories;
 
 namespace compsoc_ascii_gamejam
 {
@@ -7,7 +8,7 @@ namespace compsoc_ascii_gamejam
         static void Main()
         {
             Output.PrintStats();
-            Output.RedRidingHood();
+            RedRidingHood.GetInstance().Start();
         }
     }
 }
