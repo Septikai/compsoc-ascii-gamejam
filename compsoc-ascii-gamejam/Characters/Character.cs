@@ -2,6 +2,9 @@
 
 public class Character
 {
-    protected int Health;
-    protected int Strength;
+    protected int MaxHealth { get; set; }
+    protected int Health { get; set; }
+    protected int Strength { get; set; }
+    protected int Agility { get; set; }
+    protected int Charisma { get; set; }
 }

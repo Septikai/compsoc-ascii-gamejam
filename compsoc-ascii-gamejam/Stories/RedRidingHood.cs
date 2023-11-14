@@ -1,10 +1,10 @@
 namespace compsoc_ascii_gamejam.Stories;
 
-public class redRidingHood //Starting story you launch into
+public class RedRidingHood //Starting story you launch into
 {
-    private static readonly redRidingHood Instance = new redRidingHood();
+    private static readonly RedRidingHood Instance = new RedRidingHood();
 
-    private redRidingHood()
+    private RedRidingHood()
     {
         /*introductory part of mom sending you on journey
         
