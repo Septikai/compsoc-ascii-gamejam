@@ -15,7 +15,6 @@ public class RedRidingHood //Starting story you launch into
         get option to choose paths
         see some interesting looking rocks, collect
         see blade, collect
-        **DONE UP TO HERE SO FAR**
         statement giving you option on what you want to do 
 
         RUN:
@@ -60,6 +59,9 @@ public class RedRidingHood //Starting story you launch into
         Console.WriteLine("Do you pick the flowers? please input 'yes' or 'no'");
         playerStatus = Console.ReadLine();
         Console.WriteLine(playerStatus);
+        
+        //playerStatus( validResponses, new list<String>() {"yes", "no", "fight", "run", "talk", "fast", "safe"});
+
         if (playerStatus == "yes")
         {
             Console.WriteLine("FLOWERS WERE ADDED TO INVENTORY"); //add flowers to the inventory class
@@ -68,10 +70,15 @@ public class RedRidingHood //Starting story you launch into
         {
             Console.WriteLine("You look at the flowers and smile before you continue on your way");
         }
+        else
+        {
+            Console.WriteLine(playerStatus + " is an invalid answer. Please try again!");
+        }
         Console.WriteLine("You continue walking looking across the trees, and admiring the natural scenery. You keep walking until eventually you come across a split in the path");
         Console.WriteLine("both paths will take you to your grandmothers house, however one while safer takes longer, but the faster path is more dangerous.");
         Console.WriteLine("Which path do you take? Please enter in 'safe' or 'fast' to decide!");
         whichPath = Console.ReadLine();
+        // playerStatus(yes, no, fight, run, talk, fast, safe);
         if (whichPath == "safe")
         {
             Console.WriteLine("You begin to walk down the safe but longer path. As you walk through you see some stones that look as though you could use them as little weights");
