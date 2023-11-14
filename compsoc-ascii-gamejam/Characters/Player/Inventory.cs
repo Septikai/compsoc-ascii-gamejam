@@ -1,50 +1,50 @@
 ﻿namespace compsoc_ascii_gamejam.Characters.Player;
 
-public enum ITEMS
+public enum Items
 {
-    ROCK,
-    STICK
+    Rock,
+    Stick
 }
 
 public class Inventory
 {
     // <ID, <Name, Description>>
-    private static Dictionary<ITEMS, Tuple<String, String>> itemDescription =
-        new Dictionary<ITEMS, Tuple<string, string>>()
+    private static readonly Dictionary<Items, Tuple<String, String>> ItemDescription =
+        new Dictionary<Items, Tuple<string, string>>()
         {
             {
-                ITEMS.ROCK, new Tuple<string, string>("Rock", "hard and solid")
+                Items.Rock, new Tuple<string, string>("Rock", "hard and solid")
             },
             {
-                ITEMS.STICK, new Tuple<string,string>("Stick", "Contains at least 2 ends")
+                Items.Stick, new Tuple<string, string>("Stick", "Contains at least 2 ends")
             }
         };
 
-    private Dictionary<ITEMS, uint> inventory = new Dictionary<ITEMS, uint>();
+    private readonly Dictionary<Items, uint> _inventory = new Dictionary<Items, uint>();
 
-    public void addToInventory(ITEMS item)
+    public void AddToInventory(Items item)
     {
-        if (inventory.ContainsKey(item))
+        if (_inventory.ContainsKey(item))
         {
-            inventory[item]++;
+            _inventory[item]++;
         }
         else
         {
-            inventory.Add(item, 1);
+            _inventory.Add(item, 1);
         }
     }
-    
-    public void subtractFromInventory(ITEMS item)
+
+    public void SubtractFromInventory(Items item)
     {
-        if (inventory.ContainsKey(item))
+        if (_inventory.ContainsKey(item))
         {
-            if (inventory[item] > 1)
+            if (_inventory[item] > 1)
             {
-                inventory[item]++;
+                _inventory[item]--;
             }
             else
             {
-                inventory.Remove(item);
+                _inventory.Remove(item);
             }
         }
         else
@@ -52,28 +52,28 @@ public class Inventory
             Console.WriteLine("No such item found");
         }
     }
-    
-    public void checkInventory(ITEMS item)
+
+    public void CheckInventory(Items item)
     {
-        if (inventory.TryGetValue(item, out var value))
+        if (_inventory.TryGetValue(item, out var value))
         {
-            Console.WriteLine($"Currently there are: {value.ToString()} {itemDescription[item].Item1}");
+            Console.WriteLine($"Currently there are: {value.ToString()} {ItemDescription[item].Item1}");
         }
         else
         {
-            Console.WriteLine($"There are no {itemDescription[item].Item1} in the inventory");
+            Console.WriteLine($"There are no {ItemDescription[item].Item1} in the inventory");
         }
     }
 
-    public void getDescription(ITEMS item)
+    public void GetDescription(Items item)
     {
-        if (inventory.TryGetValue(item, out var value))
+        if (_inventory.TryGetValue(item, out var value))
         {
-            Console.WriteLine($"{itemDescription[item].Item1} : {itemDescription[item].Item2}");
+            Console.WriteLine($"{ItemDescription[item].Item1} : {ItemDescription[item].Item2}");
         }
         else
         {
-            Console.WriteLine($"There are no {itemDescription[item].Item1} in the inventory");
+            Console.WriteLine($"There are no {ItemDescription[item].Item1} in the inventory");
         }
     }
 }
