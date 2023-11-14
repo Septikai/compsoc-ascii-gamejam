@@ -1,14 +1,33 @@
 namespace compsoc_ascii_gamejam.Stories;
 
-public class RedRidingHood //Starting story you launch into
+public class redRidingHood //Starting story you launch into
 {
-    private static readonly RedRidingHood Instance = new RedRidingHood();
+    private static readonly redRidingHood Instance = new redRidingHood();
 
-    private RedRidingHood()
+    private redRidingHood()
     {
+        string playerStatus;
+        
+        Console.WriteLine("Once upon a time there was a girl who wore a red cape gifted to her by her grandmother.");
+        Console.WriteLine("One day her mother gave her a basket with wine, and fruits to bring to her grandmother, who lived in a cottage in the woods!");
+        Console.WriteLine("Her mother warned her not to speak to strangers on the way, and to come straight home.");
+        Console.WriteLine("You head out through the woods and begin your journey.");
+        Console.WriteLine("Along the way you see a patch of flowers in various colours.")
+        Console.WriteLine("Do you pick the flowers? please input 'yes' or 'no'")
+        Console.ReadLine = playerStatus;
+        if (playerStatus == 'yes')
+        {
+            Console.WriteLine("FLOWERS WERE ADDED TO INVENTORY"); //add flowers to the inventory class
+        }
+        else if (playerStatus == 'no')
+        {
+            Console.WriteLine("You look at the flowers and smile before you continue on your way");
+        }
+        
         /*introductory part of mom sending you on journey
         
         find some flowers along the way, collect
+        **DONE UP TO HERE SO FAR**
         see some interesting looking rocks, collect
         statement giving you option on what you want to do 
 
