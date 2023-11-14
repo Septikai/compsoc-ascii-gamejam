@@ -1,4 +1,4 @@
-﻿namespace Project
+﻿namespace compsoc_ascii_gamejam
 {
     static class Program
     {
