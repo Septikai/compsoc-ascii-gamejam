@@ -8,9 +8,4 @@
         <Nullable>enable</Nullable>
     </PropertyGroup>
 
-    <ItemGroup>
-      <Folder Include="Characters\NonPlayerCharacter\" />
-      <Folder Include="Stories\" />
-    </ItemGroup>
-
 </Project>
