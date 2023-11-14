@@ -25,7 +25,7 @@ public class PlayerCharacter : Character
 
     public Dictionary<string, Tuple<int, int?>> GetAllPlayerStats()
     {
-        Dictionary<string, Tuple<int, int?>> statsDict = new Dictionary<string, Tuple<int, int?>>();
+        var statsDict = new Dictionary<string, Tuple<int, int?>>();
         statsDict.Add("Health", new Tuple<int, int?>(this.Health, this.MaxHealth));
         statsDict.Add("Strength", new Tuple<int, int?>(this.Strength, null));
         statsDict.Add("Agility", new Tuple<int, int?>(this.Agility, null));
