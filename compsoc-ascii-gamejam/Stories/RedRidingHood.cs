@@ -1,4 +1,5 @@
 using System.Runtime.CompilerServices;
+using System.Runtime.Intrinsics.X86;
 
 namespace compsoc_ascii_gamejam.Stories;
 
@@ -11,8 +12,10 @@ public class RedRidingHood //Starting story you launch into
         /*introductory part of mom sending you on journey
         
         find some flowers along the way, collect
-        **DONE UP TO HERE SO FAR**
+        get option to choose paths
         see some interesting looking rocks, collect
+        see blade, collect
+        **DONE UP TO HERE SO FAR**
         statement giving you option on what you want to do 
 
         RUN:
@@ -98,8 +101,26 @@ public class RedRidingHood //Starting story you launch into
             }
             else if (playerStatus == "no")
             {
-                Console.WriteLine("You decide it's not worth risking getting hurt, or staying on this path any longer.");
+                Console.WriteLine("You decide it's not worth risking getting hurt, or staying on this path any longer, and continue walking until you reach the point where the two paths sink up!");
             }
+            Console.WriteLine("You are on the final stretch to get to granny's house. You begin walking down the path when suddenly a wolf runs out infront of you blocking your way.");
+            Console.WriteLine("You have three options. You can 'run' away, 'talk' to the wolf and try to reason with it, or you can 'fight' the wolf and not have to worry about it again");
+            Console.WriteLine("Which option do you choose? Please enter any phrase that was in quotes int he previous statement!");
+            playerStatus = Console.ReadLine();
+            if (playerStatus == "run")
+            {
+                //WHATEVER IT IS I SAID WOULD HAPPEN
+            }
+            else if (playerStatus == "talk")
+            {
+                //WHATEVER IT IS I SAID WOULD HAPPEN
+            }
+            else if (playerStatus == "fight")
+            {
+                //WE HAVE NOT PLANNED THIS BIT OUT AT ALL WOOOO
+            }
+            //END OF LITTLE RED RIDING HOOD. CODE SHOULD NOW BEGIN THE NEXT STORY YIPPEE
+
         }
     }
     
