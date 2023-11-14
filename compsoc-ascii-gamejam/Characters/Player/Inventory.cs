@@ -9,7 +9,7 @@ public enum Items
 public class Inventory
 {
     // <ID, <Name, Description>>
-    private static readonly Dictionary<Items, Tuple<String, String>> ItemDescription =
+    private static readonly Dictionary<Items, Tuple<string, string>> ItemDescription =
         new Dictionary<Items, Tuple<string, string>>()
         {
             {
@@ -24,9 +24,9 @@ public class Inventory
 
     public void AddToInventory(Items item)
     {
-        if (_inventory.ContainsKey(item))
+        if (_inventory.TryGetValue(item, out var value))
         {
-            _inventory[item]++;
+            _inventory[item] = ++value;
         }
         else
         {
@@ -36,11 +36,11 @@ public class Inventory
 
     public void SubtractFromInventory(Items item)
     {
-        if (_inventory.ContainsKey(item))
+        if (_inventory.TryGetValue(item, out var value))
         {
-            if (_inventory[item] > 1)
+            if (value > 1)
             {
-                _inventory[item]--;
+                _inventory[item] = --value;
             }
             else
             {
@@ -55,25 +55,15 @@ public class Inventory
 
     public void CheckInventory(Items item)
     {
-        if (_inventory.TryGetValue(item, out var value))
-        {
-            Console.WriteLine($"Currently there are: {value.ToString()} {ItemDescription[item].Item1}");
-        }
-        else
-        {
-            Console.WriteLine($"There are no {ItemDescription[item].Item1} in the inventory");
-        }
+        Console.WriteLine(_inventory.TryGetValue(item, out var value)
+            ? $"Currently there are: {value.ToString()} {ItemDescription[item].Item1}"
+            : $"There are no {ItemDescription[item].Item1} in the inventory");
     }
 
     public void GetDescription(Items item)
     {
-        if (_inventory.TryGetValue(item, out var value))
-        {
-            Console.WriteLine($"{ItemDescription[item].Item1} : {ItemDescription[item].Item2}");
-        }
-        else
-        {
-            Console.WriteLine($"There are no {ItemDescription[item].Item1} in the inventory");
-        }
+        Console.WriteLine(_inventory.TryGetValue(item, out var value)
+            ? $"{ItemDescription[item].Item1} : {ItemDescription[item].Item2}"
+            : $"There are no {ItemDescription[item].Item1} in the inventory");
     }
 }
