@@ -7,6 +7,7 @@ namespace compsoc_ascii_gamejam
         static void Main()
         {
             Output.PrintStats();
+            Output.RedRidingHood();
         }
     }
 }
