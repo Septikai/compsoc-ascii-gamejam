@@ -9,6 +9,7 @@ namespace compsoc_ascii_gamejam
         {
             Output.PrintStats();
             RedRidingHood.GetInstance().Start();
+            Console.Read();
         }
     }
 }

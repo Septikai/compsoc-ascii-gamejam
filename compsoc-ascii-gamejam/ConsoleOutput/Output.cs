@@ -4,6 +4,7 @@ namespace compsoc_ascii_gamejam.ConsoleOutput;
 
 public class Output
 {
+    
     public static void PrintStats()
     {
         var player = PlayerCharacter.GetPlayerCharacter();
@@ -11,37 +12,74 @@ public class Output
 
         var statsString = "| ";
         var statsStringLines = 1;
-        
+        var newLine = false;
+        var statLength = (statsDict.Aggregate("", (max, current) => 
+            max.Length > current.Key.Length ? max : current.Key).Length) + 7;
         foreach (var item in statsDict.Select((dictItem, i) => new { i, dictItem }))
         {
             if (item.dictItem.Value.Item2 is null)
             {
-                statsString += item.dictItem.Key + ": " + item.dictItem.Value.Item1;
+                if (!IsStringOutOfBounds(statsString.Split("\n")[statsStringLines - 1],  
+                        (item.dictItem.Key + ": " + 
+                         item.dictItem.Value.Item1).PadRight(statLength, ' ') + "|"))
+                {
+                    if (item.i != 0 && !newLine)statsString += new String(' ', statLength - (item.dictItem.Key +
+                        ": " + item.dictItem.Value.Item1).Length);
+                    newLine = false;
+                    statsString += item.dictItem.Key + ": " + item.dictItem.Value.Item1;
+                }
+                else
+                {
+                    var a = statsString.Split("\n");
+                    var b = statsString.Split("\n")[statsStringLines - 1];
+                    var c = statsString.Split("\n")[statsStringLines - 1].Length;
+                    statsString += new String(' ', Console.WindowWidth - 
+                                                   statsString.Split("\n")[statsStringLines - 1].Length - 1) + 
+                                   "|\n| ";
+                    statsStringLines++;
+                    newLine = true;
+                }
             }
             else
             {
-                statsString += item.dictItem.Key + ": " + item.dictItem.Value.Item1 + "/" + item.dictItem.Value.Item2;
+                if (!IsStringOutOfBounds(statsString.Split("\n")[statsStringLines - 1], 
+                        (item.dictItem.Key + ": " + item.dictItem.Value.Item1 + "/" + 
+                        item.dictItem.Value.Item2).PadRight(statLength, ' ') + "|"))
+                {
+                    if (item.i != 0 && !newLine) statsString += new String(' ', statLength - (item.dictItem.Key 
+                        + ": " + item.dictItem.Value.Item1 + "/" + item.dictItem.Value.Item2).Length);
+                    newLine = false;
+                    statsString += item.dictItem.Key + ": " + item.dictItem.Value.Item1 + "/" + item.dictItem.Value.Item2;
+                }
+                else
+                {
+                    statsString += new String(' ', Console.WindowWidth - 
+                                       statsString.Split("\n")[statsStringLines - 1].Length - 1) + "|\n| ";
+                    statsStringLines++;
+                    newLine = true;
+                }
             }
-
-            if (item.i != 0 && (item.i % 4 == 0 && item.i != statsDict.Count - 1))
+            if (item.i == statsDict.Count - 1)
             {
-                statsString += "\n";
-                statsStringLines++;
+                statsString += new String(' ', 
+                    Console.WindowWidth - statsString.Split("\n")[statsStringLines - 1].Length - 1) + "|";
             }
-            else if (item.i == statsDict.Count - 1) statsString += " |";
-            else statsString += " | ";
         }
 
         var output = "| Player Stats:";
-        
-        output = output + new String(' ', (statsStringLines > 1 ? 
-            statsString.Split("\n")[0].Length : statsString.Length) - output.Length - 1) + "|\n" + statsString;
-        output = "+" + new String('-', (statsStringLines > 1 ? 
-            statsString.Split("\n")[0].Length : statsString.Length) - 2) + "+\n" + output + "\n";
-        output = output + "+" + new String('-', (statsStringLines > 1 ? 
-            statsString.Split("\n")[0].Length : statsString.Length) - 2) + "+\n";
-        
+        output = output + new String(' ', Console.WindowWidth - output.Length - 1) + "|\n" + statsString;
+        PrintBoxLine();
         Console.WriteLine(output);
+        PrintBoxLine();
+    }
 
+    private static bool IsStringOutOfBounds(string originString, string toAdd)
+    {
+        return originString.Length + toAdd.Length > Console.WindowWidth;
+    }
+
+    private static void PrintBoxLine()
+    {
+        Console.WriteLine("+" + new String('-', Console.WindowWidth - 2) + "+");
     }
 }
