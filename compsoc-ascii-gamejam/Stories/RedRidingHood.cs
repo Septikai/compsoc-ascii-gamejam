@@ -1,3 +1,5 @@
+using System.Runtime.CompilerServices;
+
 namespace compsoc_ascii_gamejam.Stories;
 
 public class RedRidingHood //Starting story you launch into
@@ -45,7 +47,8 @@ public class RedRidingHood //Starting story you launch into
     public void Start()
     {
         String playerStatus;
-        
+        String whichPath;
+
         Console.WriteLine("Once upon a time there was a girl who wore a red cape gifted to her by her grandmother.");
         Console.WriteLine("One day her mother gave her a basket with wine, and fruits to bring to her grandmother, who lived in a cottage in the woods!");
         Console.WriteLine("Her mother warned her not to speak to strangers on the way, and to come straight home.");
@@ -61,6 +64,42 @@ public class RedRidingHood //Starting story you launch into
         else if (playerStatus == "no")
         {
             Console.WriteLine("You look at the flowers and smile before you continue on your way");
+        }
+        Console.WriteLine("You continue walking looking across the trees, and admiring the natural scenery. You keep walking until eventually you come across a split in the path");
+        Console.WriteLine("both paths will take you to your grandmothers house, however one while safer takes longer, but the faster path is more dangerous.");
+        Console.WriteLine("Which path do you take? Please enter in 'safe' or 'fast' to decide!");
+        whichPath = Console.ReadLine();
+        if (whichPath == "safe")
+        {
+            Console.WriteLine("You begin to walk down the safe but longer path. As you walk through you see some stones that look as though you could use them as little weights");
+            Console.WriteLine("Do you collect the stones? Please input 'yes' or 'no'!");
+            playerStatus = Console.ReadLine();
+            if (playerStatus == "yes")
+            {
+                Console.WriteLine("SMOOTH STONES ADDED TO INVENTORY"); //add the stones to the inventory
+            }
+            else if (playerStatus == "no")
+            {
+                Console.WriteLine("You don't have enough time and need to keep going to get to granny's. You continue on the path!");
+            }
+            Console.WriteLine("You continue on the path, until eventually you reach the point where the two paths would link up.");
+        }
+        else if (whichPath == "fast")
+        {
+            Console.WriteLine("You begin down the darker path which isn't as smooth, and has some thorns along it.");
+            Console.WriteLine("As you're walking you accidently trip over a tree root that is crossing the path and skin your knee.");//add -1 hp
+            Console.WriteLine("You get up and dust yourself off and continue walking taking note to pay more attention");
+            Console.WriteLine("You hear some branches crack in the woods around you and quickly do a scan, however nothing is there. You continue walking and see a blade stuck into a tree. ");
+            Console.WriteLine("Do you grab the blade? Please input 'yes' or 'no'?");
+            playerStatus = Console.ReadLine();
+            if (playerStatus == "yes")
+            {
+                Console.WriteLine("RUSTY BLADE HAS BEEN ADDED TO INVENTORY"); //add the blade to the inventory
+            }
+            else if (playerStatus == "no")
+            {
+                Console.WriteLine("You decide it's not worth risking getting hurt, or staying on this path any longer.");
+            }
         }
     }
     
