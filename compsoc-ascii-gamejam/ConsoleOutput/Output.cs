@@ -4,7 +4,6 @@ namespace compsoc_ascii_gamejam.ConsoleOutput;
 
 public class Output
 {
-    
     public static void PrintStats()
     {
         var player = PlayerCharacter.GetPlayerCharacter();
@@ -30,9 +29,6 @@ public class Output
                 }
                 else
                 {
-                    var a = statsString.Split("\n");
-                    var b = statsString.Split("\n")[statsStringLines - 1];
-                    var c = statsString.Split("\n")[statsStringLines - 1].Length;
                     statsString += new String(' ', Console.WindowWidth - 
                                                    statsString.Split("\n")[statsStringLines - 1].Length - 1) + 
                                    "|\n| ";
