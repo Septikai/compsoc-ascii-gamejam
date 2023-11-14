@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Project
+﻿namespace Project
 {
     static class Program
     {
