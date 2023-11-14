@@ -1,6 +1,6 @@
 ﻿using compsoc_ascii_gamejam.Characters.Player;
 
-namespace compsoc_ascii_gamejam.ConsoleOutput;
+namespace compsoc_ascii_gamejam.ConsoleIO;
 
 public class Output
 {

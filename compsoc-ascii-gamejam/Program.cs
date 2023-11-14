@@ -1,4 +1,4 @@
-﻿using compsoc_ascii_gamejam.ConsoleOutput;
+﻿using compsoc_ascii_gamejam.ConsoleIO;
 using compsoc_ascii_gamejam.Stories;
 
 namespace compsoc_ascii_gamejam
