@@ -1,4 +1,5 @@
 ﻿using compsoc_ascii_gamejam.Characters.NonPlayerCharacter;
+using compsoc_ascii_gamejam.Characters.Player;
 using compsoc_ascii_gamejam.Combat;
 using compsoc_ascii_gamejam.ConsoleIO;
 using compsoc_ascii_gamejam.Story;
@@ -58,7 +59,14 @@ namespace compsoc_ascii_gamejam
                         }
                     }
                 },
-                { "fight", () => CombatManager.GetInstance().InitiateCombat(new NonPlayerCharacter(6, 6, 3, 3)) },
+                { "fight", () =>
+                    {
+                        Inventory.GetInventory().AddToInventory(InventoryItem.Stick, 2);
+                        Inventory.GetInventory().AddToInventory(InventoryItem.Rock, 1);
+                        Inventory.GetInventory().AddToInventory(InventoryItem.RustedBlade, 1);
+                        CombatManager.GetInstance().InitiateCombat(new NonPlayerCharacter(6, 6, 3, 3));
+                    }
+                },
                 { "quit", () => Environment.Exit(1) }
             });
             menu.DisplayMenu();
