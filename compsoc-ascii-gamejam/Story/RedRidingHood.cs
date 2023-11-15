@@ -122,11 +122,58 @@ public class RedRidingHood //Starting story you launch into
         playerInput = Input.GetUserResponse(new List<String>() { "run", "talk", "fight" });
         if (playerInput == "run")
         {
-            //WHATEVER IT IS I SAID WOULD HAPPEN
+            /*
+            You turn around and begin to run away from the wolf. You don't pay attention where you run, anywhere will work as long as it gets you away from the wolf
+
+            *INSERT THE AGILITY STAT ROLL HERE*
+
+            IF YOU WIN
+
+            You refuse to turn around to see if you've lost the wolf. You make turns when you can to try and disorient it without realizing you're disorienting yourself.
+            You simply keep running until eventually you see the shephard boy on a hill. You begin to wave your arms at him, while you run until you reach the top of the hill and
+            notice that you have lost the wolf. You sit down and explain what has happened 
+
+            *BEGIN BOY WHO CRIED WOLF*
+
+            IF YOU LOSE 
+            *-4 HP* 
+
+            You continue to run however the wolf grabs your leg making you fall. You kick at it a few times until eventually it releases your leg and you run off. Fueled by
+            pure adrenaline you continue to run, until you see the shephard boy at the top of a hill. You run towards him and once you reach the top of the hill you sit down, and explain
+            to him what just occured. 
+            
+            *BEGIN BOY WHO CRIED WOLF*
+            */
         }
         else if (playerInput == "talk")
         {
-            //WHATEVER IT IS I SAID WOULD HAPPEN
+            /*
+
+            You stare at the wolf for a moment before you ask what it wants.
+
+            *INSERT CHARISMA ROLL HERE*
+
+            IF YOU WIN
+            
+            The wolf stares at you before sighing. It apologizes and explains that it intended to get you lost so that you could starve and be an easy dinner. However you're simply
+            too kind, and it can't bear harming you. Then it proceeds to turn around and run away leaving you shocked. You sigh and continue you're walk to granny's where you will give
+            give her the wine and fruits. She thanks you and sends you home. While on your way home however you hear a beautiful singing voice that you feel compelled to follow. You
+            begin to follow it until you reach a tower 
+
+            *Get two winpoints for RRH as granny lived but wolf didn't die, finished the quest*
+            *BEGIN RAPUNZEL*
+
+            IF YOU LOSE
+
+            The wolf starts explaining how it was out exploring when it got lost and know it can't find it's den. It looks to be a rather young wolf, and so you decide to trust it.
+            You begin to help the wolf find it's home asking questions like what it looks like, and any identifying land marks, however the wolf seems to not know anything. Eventually
+            however you turn around and the wolf has disappeared. You begin to realize you have no idea where you are, and realize you have gotten lost in the woods. You attempt to 
+            retrace your steps, however you're simply too far into the woods at this point. You eventually hear a beautiful singing voice in the distance. You decide to follow it hoping you 
+            can ask the person how to get back home. 
+
+            *NO WINPOINTS*
+            *BEGIN RAPUNZEL*
+            */
         }
         else if (playerInput == "fight")
         {

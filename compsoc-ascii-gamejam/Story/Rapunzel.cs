@@ -14,6 +14,7 @@ public class Rapunzel //start the story for snow white
         /*
         Character has left granny's and is walking home.
         Player hears the sound of singing coming from the woods and decides to follow it
+        While walking to the sound player sees 
         Follows it to a tall tower where Rapunzel is up above singing beautifully
         Character looks everywhere for an entrance to meet her however none is to be found.
         Character leaves however continues to return daily until eventually mother gothel is heard saying "rapunzel rapunzel let down your hair"
