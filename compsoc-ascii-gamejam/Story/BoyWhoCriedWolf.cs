@@ -1,8 +1,4 @@
-using System.Runtime.CompilerServices;
-using System.Runtime.Intrinsics.X86;
-using compsoc_ascii_gamejam.ConsoleIO;
-
-namespace compsoc_ascii_gamejam.Stories;
+namespace compsoc_ascii_gamejam.Story;
 
 public class BoyCriedWolf //start the story for hansel and gretel
 {

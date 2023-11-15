@@ -3,6 +3,8 @@ using System.Reflection;
 
 namespace compsoc_ascii_gamejam.Characters.Player;
 
+// If you add an item and its name wouldn't look nice in text (eg "RustedBlade") then remember
+// to also add it to the ToNiceString method at the bottom of this file
 public enum InventoryItem
 {
     [Description("Hard and solid")]
@@ -16,7 +18,6 @@ public enum InventoryItem
     [Description("Rusted but still pointy")]
     [StrengthEffect(2)]
     RustedBlade,
-
     [Description("a long vine with very sharp thorns")]
     [StrengthEffect(2)]
     ThornyVine
@@ -61,6 +62,8 @@ public static class InventoryItemExtension
         {
             case InventoryItem.RustedBlade:
                 return "Rusted Blade";
+            case InventoryItem.ThornyVine:
+                return "Thorny Vine";
             default:
                 return item.ToString();
         }

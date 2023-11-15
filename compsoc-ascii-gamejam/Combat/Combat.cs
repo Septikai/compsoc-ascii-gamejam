@@ -5,7 +5,7 @@ namespace compsoc_ascii_gamejam.Combat;
 
 public class Combat
 {
-    private NonPlayerCharacter _enemy;
+    private readonly NonPlayerCharacter _enemy;
     private bool _isPlayerTurn;
 
     public Combat(NonPlayerCharacter enemy)

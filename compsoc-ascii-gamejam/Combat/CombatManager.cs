@@ -42,7 +42,6 @@ public class CombatManager
 
     private void DisplayCombat()
     {
-        ConsoleKey key;
         while (!this._combatOver)
         {
             UpdateCombat();

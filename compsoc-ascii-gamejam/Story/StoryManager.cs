@@ -1,50 +1,50 @@
 ﻿using System.Text;
 using compsoc_ascii_gamejam.Characters.Player;
 
-namespace compsoc_ascii_gamejam.Stories;
+namespace compsoc_ascii_gamejam.Story;
 
 public class BiLinkedStoryNode
 {
-    private BiLinkedStoryNode? nextNode;
-    private List<Tuple<string, BiLinkedStoryNode>>? decisions;
-    private string dialogue;
-    private InventoryItem? itemReceived;
+    private BiLinkedStoryNode? _nextNode;
+    private List<Tuple<string, BiLinkedStoryNode>>? _decisions;
+    private string _dialogue;
+    private InventoryItem? _itemReceived;
 
     public BiLinkedStoryNode(BiLinkedStoryNode? nextNode, List<Tuple<string, BiLinkedStoryNode>>? decisions, string dialogue)
     {
-        this.nextNode = nextNode;
-        this.decisions = decisions;
-        this.dialogue = dialogue;
+        this._nextNode = nextNode;
+        this._decisions = decisions;
+        this._dialogue = dialogue;
     }
     
     public BiLinkedStoryNode()
     {
-        this.nextNode = null;
-        this.decisions = null;
-        this.dialogue = "";
-        this.itemReceived = null;
+        this._nextNode = null;
+        this._decisions = null;
+        this._dialogue = "";
+        this._itemReceived = null;
     }
 
-    public string getDialogue()
+    public string GetDialogue()
     {
-        return dialogue;
+        return _dialogue;
     }
 
-    public BiLinkedStoryNode? getNextNode()
+    public BiLinkedStoryNode? GetNextNode()
     {
-        return nextNode;
+        return _nextNode;
     }
 
-    public List<string>? getDecisions()
+    public List<string>? GetDecisions()
     {
-        if (decisions != null && decisions.Count == 0)
+        if (_decisions is { Count: 0 })
         {
             return null;
         }
 
         List<string> decisionList = new List<string>();
 
-        foreach (var value in decisions)
+        foreach (var value in _decisions)
         {
             decisionList.Add(value.Item1);
         }
@@ -52,10 +52,10 @@ public class BiLinkedStoryNode
         return decisionList;
     }
 
-    public BiLinkedStoryNode getDecidedNode(string dec)
+    public BiLinkedStoryNode GetDecidedNode(string dec)
     {
-        if (decisions != null)
-            foreach (var value in decisions)
+        if (_decisions != null)
+            foreach (var value in _decisions)
             {
                 if (value.Item1 == dec)
                 {
@@ -66,54 +66,52 @@ public class BiLinkedStoryNode
         return this;
     }
 
-    public void setNextNode(BiLinkedStoryNode newNode)
+    public void SetNextNode(BiLinkedStoryNode newNode)
     {
-        nextNode = newNode;
+        _nextNode = newNode;
     }
     
-    public void setDialogue(string newDialogue)
+    public void SetDialogue(string newDialogue)
     {
-        dialogue = newDialogue;
+        _dialogue = newDialogue;
     }
 
-    public void addDecision(Tuple<string, BiLinkedStoryNode> newDecision)
+    public void AddDecision(Tuple<string, BiLinkedStoryNode> newDecision)
     {
-        decisions ??= new List<Tuple<string, BiLinkedStoryNode>>();
-        decisions.Add(newDecision);
+        _decisions ??= new List<Tuple<string, BiLinkedStoryNode>>();
+        _decisions.Add(newDecision);
     }
 
-    public void setItem(InventoryItem? newItem)
+    public void SetItem(InventoryItem? newItem)
     {
-        itemReceived = newItem;
+        _itemReceived = newItem;
     }
 
-    public InventoryItem? getItem()
+    public InventoryItem? GetItem()
     {
-        return itemReceived;
+        return _itemReceived;
     }
 
 }
 
 public class StoryManager
 {
-    private BiLinkedStoryNode root;
+    private BiLinkedStoryNode _root;
 
 
     public StoryManager(string filepath)
     {
-        root = loadFile(filepath);
+        _root = LoadFile(filepath);
     }
 
-    public BiLinkedStoryNode loadFile(string filepath)
+    public BiLinkedStoryNode LoadFile(string filepath)
     {
         filepath = Path.Combine(Directory.GetCurrentDirectory(), filepath);
-        BiLinkedStoryNode? newRoot = new BiLinkedStoryNode();
         List<string?> fileLines = new List<string?>();
         using (var fileStream = File.OpenRead(filepath))
         {
             using (var streamReader = new StreamReader(fileStream, Encoding.UTF8, true)) {
-                string? line;
-                while ((line = streamReader.ReadLine()) != null)
+                while (streamReader.ReadLine() is { } line)
                 {
                     if (!line.Contains("#")) // comments help navigate the story format
                     {
@@ -124,7 +122,7 @@ public class StoryManager
         }
 
         Dictionary<int, BiLinkedStoryNode> createdNodes = new Dictionary<int, BiLinkedStoryNode>();
-        newRoot = RecursiveFileReader(ref fileLines, ref createdNodes, 0);
+        var newRoot = RecursiveFileReader(ref fileLines, ref createdNodes, 0);
 
         return newRoot;
     }
@@ -141,7 +139,7 @@ public class StoryManager
         
         var workingLine = fileLines[workingIndex];
         var data = workingLine.Split(';');
-        currentWorkingNode.setDialogue(data[1]);
+        currentWorkingNode.SetDialogue(data[1]);
         createdNodes.Add(workingIndex, currentWorkingNode);
         if (data[2].Contains('{'))
         {
@@ -153,7 +151,7 @@ public class StoryManager
                 var choice = choices[i].Split("_");
                 var dialogue = choice[0];
                 var nextLine = int.Parse(choice[1]);
-                InventoryItem? item_given = int.Parse(choice[2]) switch
+                InventoryItem? itemGiven = int.Parse(choice[2]) switch
                 {
                     0 => InventoryItem.Rock,
                     1 => InventoryItem.Stick,
@@ -166,15 +164,15 @@ public class StoryManager
                 if (workingIndex != nextLine)
                 {
                     var newNode = RecursiveFileReader(ref fileLines, ref createdNodes, nextLine);
-                    newNode.setItem(item_given);
+                    newNode.SetItem(itemGiven);
                     if (newNode != null)
                     {
-                        currentWorkingNode.addDecision(new Tuple<string, BiLinkedStoryNode>(dialogue, newNode));
+                        currentWorkingNode.AddDecision(new Tuple<string, BiLinkedStoryNode>(dialogue, newNode));
                     }
                 }
                 else
                 {
-                    currentWorkingNode.addDecision(new Tuple<string, BiLinkedStoryNode>(dialogue, currentWorkingNode));
+                    currentWorkingNode.AddDecision(new Tuple<string, BiLinkedStoryNode>(dialogue, currentWorkingNode));
                 }
             }
         }
@@ -184,7 +182,7 @@ public class StoryManager
             var newNode = RecursiveFileReader(ref fileLines, ref createdNodes, int.Parse(data[2]));
             if (newNode != null)
             {
-                currentWorkingNode.setNextNode(newNode);
+                currentWorkingNode.SetNextNode(newNode);
             }
         }
 
