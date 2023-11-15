@@ -96,7 +96,7 @@ public class BiLinkedStoryNode
 
 public class StoryManager
 {
-    private BiLinkedStoryNode _root;
+    private BiLinkedStoryNode? _root;
 
 
     public StoryManager(string filepath)
@@ -104,8 +104,9 @@ public class StoryManager
         _root = LoadFile(filepath);
     }
 
-    public BiLinkedStoryNode LoadFile(string filepath)
+    public BiLinkedStoryNode? LoadFile(string filepath)
     {
+        Console.WriteLine($"Loading: {filepath}");
         filepath = Path.Combine(Directory.GetCurrentDirectory(), filepath);
         List<string?> fileLines = new List<string?>();
         using (var fileStream = File.OpenRead(filepath))
@@ -123,7 +124,7 @@ public class StoryManager
 
         Dictionary<int, BiLinkedStoryNode> createdNodes = new Dictionary<int, BiLinkedStoryNode>();
         var newRoot = RecursiveFileReader(ref fileLines, ref createdNodes, 0);
-
+        Console.WriteLine("Successfully loaded story!");
         return newRoot;
     }
 
@@ -136,7 +137,11 @@ public class StoryManager
         {
             return knownNode;
         }
-        
+
+        if (workingIndex < 0)
+        {
+            return null;
+        }
         var workingLine = fileLines[workingIndex];
         var data = workingLine.Split(';');
         currentWorkingNode.SetDialogue(data[1]);
@@ -150,8 +155,8 @@ public class StoryManager
             {
                 var choice = choices[i].Split("_");
                 var dialogue = choice[0];
-                var nextLine = int.Parse(choice[1]);
-                InventoryItem? itemGiven = int.Parse(choice[2]) switch
+                var nextLine = int.Parse(choice[2]);
+                InventoryItem? itemGiven = int.Parse(choice[1]) switch
                 {
                     0 => InventoryItem.Rock,
                     1 => InventoryItem.Stick,
@@ -189,5 +194,58 @@ public class StoryManager
         createdNodes[workingIndex] = currentWorkingNode;
         
         return currentWorkingNode;
+    }
+
+    public void nextNode()
+    {
+        if (_root.GetNextNode() != null)
+        {
+            _root = _root.GetNextNode();    
+        }
+    }
+
+    public void nextDecisionNode(string decison)
+    {
+        _root = _root.GetDecidedNode(decison);
+    }
+    
+    
+    public string getDialogue()
+    {
+        return _root.GetDialogue();
+    }
+
+    public List<string>? getDecisions()
+    {
+        return _root.GetDecisions();
+    }
+
+    public InventoryItem? getItem()
+    {
+        return _root.GetItem();
+    }
+
+    public string[]? getEffect()
+    {
+        string[] result = getDialogue().Split('[');
+        if (result.Length != 1)
+        {
+            var effect = result[^1].Replace("]", "").Split("_");
+            if (effect[0] == "LOAD")
+            {
+                Console.WriteLine($"Loading next story: {effect[1]}");
+                _root = LoadFile(effect[1]);
+                return effect;
+            }
+            else
+            {
+                Console.WriteLine($"Effect applied: {effect[1]}");
+                return effect;
+            }
+        }
+        else
+        {
+            return null;
+        }
     }
 }
