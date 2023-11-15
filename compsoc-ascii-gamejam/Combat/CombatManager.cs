@@ -52,7 +52,7 @@ public class CombatManager
 
     public void EndCombat()
     {
-        
+        this._combatOver = true;
     }
 
     public bool UpdateCombat()
