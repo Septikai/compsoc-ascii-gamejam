@@ -25,7 +25,21 @@ public enum InventoryItem
     
     [Description("a long vine with very sharp thorns")]
     [StatEffect(CharacterStat.Strength, 2)]
-    ThornyVine
+    ThornyVine,
+
+    [Description("It's covered in chocolate frosting")]
+    [StatEffect(CharacterStat.Health, 2)]
+    CakeSlice,
+
+    [Description("soft to the touch")]
+    [StatEffect(CharacterStat.Charisma, 1)]
+
+    Fur,
+
+    [Description("a vine of berries you grabbed from a bush")]
+    [StatEffect(CharacterStat.Health, 3)]
+
+    Berries
 }
 
 class StatEffectAttribute(CharacterStat stat, int val) : Attribute
