@@ -53,4 +53,4 @@
 48;You eventually hear a beautiful singing voice in the distance.;49
 49;You decide to follow it hoping you can ask the person how to get back home.[LOAD_Story\\StoryFiles\\Rapunzel.story];-1
 # Fight
-50;This is a placeholder, the fight is still not implemented[ROLL_STR];31
+50;This is a placeholder, the fight is still not implemented[ROLL_STR];{win_-1_30@lose_-1_1}
