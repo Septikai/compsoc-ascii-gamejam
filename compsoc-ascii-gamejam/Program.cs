@@ -29,7 +29,7 @@ namespace compsoc_ascii_gamejam
                                 {
                                     if (effect[1] == "STR")
                                     {
-                                        CombatManager.GetInstance().InitiateCombat(new NonPlayerCharacter(6,6,3,3));
+                                        CombatManager.GetInstance().InitiateCombat(new NonPlayerCharacter(8,4,3,3));
                                         storyManager.nextDecisionNode("win");
                                         continue;
                                     }
