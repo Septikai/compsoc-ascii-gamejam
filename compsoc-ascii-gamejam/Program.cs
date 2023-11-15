@@ -13,6 +13,7 @@ namespace compsoc_ascii_gamejam
             Output.PrintStats();
             Inventory.GetInventory().AddToInventory(InventoryItem.Stick, 2);
             Inventory.GetInventory().AddToInventory(InventoryItem.Rock, 1);
+            Inventory.GetInventory().AddToInventory(InventoryItem.RustedBlade, 1);
             Output.PrintInv();
             
             var storyManager = new StoryManager("Story\\testStory.txt");

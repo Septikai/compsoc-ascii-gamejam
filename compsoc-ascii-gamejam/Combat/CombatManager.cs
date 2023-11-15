@@ -44,22 +44,23 @@ public class CombatManager
     {
         while (!this._combatOver)
         {
-            UpdateCombat();
+            var ok = UpdateCombat();
+            if (!ok) continue;
             this._currentCombat.AwaitEndOfTurn();
         }
     }
 
     public void EndCombat()
     {
-        
+
     }
 
-    private void UpdateCombat()
+    public bool UpdateCombat()
     {
         Console.Clear();
         var h = Console.WindowHeight - 3;
         var gap = (h - 4) / 5;
-        if (h > 4 && gap - 2 >= 5)
+        if (h > 4)
         {
             var w = Console.WindowWidth - 2;
             var wPadding = new List<int>()
@@ -86,11 +87,19 @@ public class CombatManager
                                          ' ').Length)) + item.line.Item2.PadRight(wPadding[item.i] 
                         + item.line.Item2.Length, ' ') + "|");
             }
-            for (var i = 0; i < gap; i++) Console.WriteLine("|" + new String(' ', w) + "|");
+            for (var i = 2; i < gap; i++) Console.WriteLine("|" + new String(' ', w) + "|");
+            for (var i = this._combatMenu._eventQueue.Count; i < 2; i++) Console.WriteLine("|" + new String(' ', w) + "|");
+            var index = 0;
+            foreach (var str in this._combatMenu._eventQueue)
+            {
+                Console.WriteLine("|" + this._combatMenu._eventQueue.ElementAt(index++).PadRight(w) + "|");
+            }
+            return true;
         }
         else
         {
             Console.WriteLine("PLEASE ENLARGE YOUR CONSOLE THEN PRESS ENTER");
+            return false;
         }
     }
 }

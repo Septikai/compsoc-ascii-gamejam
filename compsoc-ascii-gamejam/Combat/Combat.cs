@@ -44,7 +44,7 @@ public class Combat
 
     public void PassTurn()
     {
-        System.Threading.Thread.Sleep(200);
+        System.Threading.Thread.Sleep(2000);
         this._isPlayerTurn = !this._isPlayerTurn;
     }
 
@@ -62,6 +62,9 @@ public class Combat
             var enemyDead = this._enemy.Damage(-damage);
             if (enemyDead) CombatManager.GetInstance().GetCombatMenu().Victory();
         }
+        CombatManager.GetInstance().GetCombatMenu().PushToEventQueue(
+            "The enemy attacked you and " + (damage > 0 ? "did " + damage + " damage!" : damage == 0 ? 
+                "did no damage!" : "took " + (-damage) + " damage!"));
         this.PassTurn();
     }
 
@@ -81,12 +84,18 @@ public class Combat
             var playerDead = PlayerCharacter.GetPlayerCharacter().Damage(-damage);
             if (playerDead) CombatManager.GetInstance().GetCombatMenu().Defeat();
         }
+        CombatManager.GetInstance().GetCombatMenu().PushToEventQueue(
+            "You attacked the enemy and " + (damage > 0 ? "did " + damage + " damage!" : damage == 0 ? 
+                "did no damage!" : "took " + (-damage) + " damage!"));
+        this.PassTurn();
     }
 
     public void Defend()
     {
         if (!this._isPlayerTurn) return;
         this._tempDfcBonus += 2;
+        CombatManager.GetInstance().GetCombatMenu().PushToEventQueue("You ready yourself to defend!");
+        this.PassTurn();
     }
 
     public void Inventory()
@@ -97,6 +106,7 @@ public class Combat
 
     public void UseItem(InventoryItem item)
     {
+        CombatManager.GetInstance().GetCombatMenu().ResetActiveOption();
         Characters.Player.Inventory.GetInventory().RemoveFromInventory(item, 1, true);
         var bonus = item.GetStatEffect();
         var stat = item.GetStatType();
@@ -115,6 +125,7 @@ public class Combat
                 this._tempDfcBonus += bonus;
                 break;
         }
+        CombatManager.GetInstance().GetCombatMenu().PushToEventQueue("You used your " + item.ToNiceString() + "!");
     }
 
     private int CombatStrengthTest(int testVal, int targetVal)

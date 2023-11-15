@@ -17,7 +17,7 @@ public class CombatMenu
     private bool _hasBeenDisplayed = false;
     private int _dieValue = 0;
     private bool _showInventory = false;
-    private readonly Queue<String> _eventQueue = new();
+    public readonly Queue<String> _eventQueue = new();
     
     public CombatMenu(Combat currentCombat)
     {
@@ -36,6 +36,7 @@ public class CombatMenu
 
     public void ToggleShowInventory()
     {
+        this._activeOption = 0;
         this._showInventory = !this._showInventory;
     }
 
@@ -62,10 +63,10 @@ public class CombatMenu
             foreach (var item in initialItems)
             {
                 items.Add(item.Key == initialItems[this._activeOption].Key ? 
-                    item.Key.ToNiceString().ToUpper() + "(" + item.Item3 + ") - " + item.Item2.ToAbbreviation() + 
-                    " +" + item.Item2 : 
-                    item.Key.ToNiceString().ToLower() + "(" + item.Item3 + ") - " + item.Item2.ToAbbreviation() + 
-                    " +" + item.Item2);
+                    item.Key.ToNiceString().ToUpper() + " (" + item.Value + ") - " + item.Item2.ToAbbreviation() + 
+                    " +" + item.Item3 : 
+                    item.Key.ToNiceString().ToLower() + " (" + item.Value + ") - " + item.Item2.ToAbbreviation() + 
+                    " +" + item.Item3);
             }
         }
         List<String> dieFace = GetDieValue();
@@ -98,47 +99,31 @@ public class CombatMenu
         }
         else
         {
-            // foreach (var item in items.Select((line, i) => new { i, line }))
-            // {
-            //     for (var i = 0; i < (gap - 2) / 5; i++) Console.WriteLine("|" + new String(' ', w) + "|");
-            //     Console.WriteLine("|" + );
-                
-                
-                
-                // var toAdd = item.line;
-                // var toAddQueue = new List<string>();
-                // var currentLine = 0;
-                // if (item.line.Length > w)
-                // {
-                //     while (item.line.Length > w)
-                //     {
-                //         toAddQueue.Add("");
-                //         var splitString = toAdd.Split(' ');
-                //         var currentIndex = 0;
-                //         while (!IsStringOutOfBounds(toAddQueue[currentLine].Length + splitString[currentIndex]))
-                //         {
-                //             currentIndex++;
-                //             toAddQueue[currentLine] += splitString[currentIndex];
-                //         }
-                //
-                //         toAdd = String.Join(" ", splitString.Except(toAddQueue[currentLine].Split(' ')));
-                //         currentLine++;
-                //     }
-                // }
-                // else
-                // {
-                //     toAddQueue.Add("| " + toAdd);
-                // }
-                //
-                //
-                // foreach (var queueItem in toAddQueue.Select((line, i) => new { i, line }))
-                // {
-                //     invString += queueItem.line;
-                //     invString += new String(' ',
-                //                      Console.WindowWidth - invString.Split("\n").Last().Length - 1) + "|" +
-                //                  (item.i < invDict.Count - 1 ? "\n" : "");
-                // }
-            // }
+            var prevItemLength = 0;
+            var top = 3 + gap * 3;
+            var newGap = 3 + (gap - 2) * 3 - Math.Ceiling((float) items.Count / 2) - 1;
+            
+            for (var i = 0; i < Math.Floor((float) newGap / 2); i++) Console.WriteLine("|" + new String(' ', w) + "|");
+            Console.WriteLine("|" + "Inventory:".PadLeft(wPadding + 10).PadRight(w) + "|");
+            foreach (var item in items.Select((line, i) => new { i, line }))
+            {
+                if (item.i % 2 != 0)
+                {
+                    Console.WriteLine(item.line.PadLeft(wPadding + item.line.Length).PadRight(w - prevItemLength) + "|");
+                    prevItemLength = 0;
+                }
+                else
+                {
+                    for (var i = 0; i < (gap - 2) / 5; i++) Console.WriteLine("|" + new String(' ', w) + "|");
+                    Console.Write("|" + item.line.PadLeft(wPadding + item.line.Length).PadRight(wPadding * 2 + item.line.Length));
+                    prevItemLength = item.line.PadLeft(wPadding + item.line.Length)
+                        .PadRight(wPadding * 2 + item.line.Length).Length;
+                }
+            }
+            if (prevItemLength > 0) Console.WriteLine(" ".PadRight(w - prevItemLength) + "|");
+            // if (items.Count == 0) Console.WriteLine("|" + " ".PadRight(w) + "|");
+            for (var i = 0; i < Math.Ceiling((float) newGap / 2); i++) Console.WriteLine("|" + new String(' ', w) + "|");
+            Output.PrintBoxLine();
         }
         if (!this._hasBeenDisplayed) this._hasBeenDisplayed = true;
     }
@@ -155,7 +140,7 @@ public class CombatMenu
             case 2:
                 return new List<String>()
                 {
-                    "    o ", "       ", " o     "
+                    "     o ", "       ", " o     "
                 };
             case 3:
                 return new List<String>()
@@ -190,13 +175,20 @@ public class CombatMenu
         switch (key)
         {
             case ConsoleKey.Escape:
-                // if (_canQuit) this._isQuitting = true;
+                if (this._showInventory) this.ToggleShowInventory();
+                break;
+            case ConsoleKey.Backspace:
+                if (this._showInventory) this.ToggleShowInventory();
                 break;
             case ConsoleKey.UpArrow:
-                this._activeOption -= this._activeOption > 0 ? 1 : 0;
+                if (!this._showInventory) this._activeOption -= this._activeOption > 0 ? 1 : 0;
+                else if (this._activeOption - 2 >= 0) this._activeOption -= 2;
+                else this._activeOption -= this._activeOption > 0 ? 1 : 0;
                 break;
             case ConsoleKey.DownArrow:
-                this._activeOption += this._activeOption < this._options.Count - 1 ? 1 : 0;
+                if (!this._showInventory) this._activeOption += this._activeOption < this._options.Count - 1 ? 1 : 0;
+                else if (this._activeOption + 2 <= this._options.Count - 1) this._activeOption += 2;
+                else this._activeOption += this._activeOption < this._options.Count - 1 ? 1 : 0;
                 break;
             case ConsoleKey.LeftArrow:
                 this._activeOption -= this._activeOption > 0 ? 1 : 0;
@@ -215,7 +207,6 @@ public class CombatMenu
         if (!this._showInventory) this._options.Values.ToList()[this._activeOption].Invoke();
         else _currentCombat.UseItem(Inventory.GetInventory().GetContents().Keys
             .ToList()[this._activeOption]);
-        this._currentCombat.PassTurn();
     }
 
     public void SetDieValue(int result)
@@ -223,20 +214,31 @@ public class CombatMenu
         this._dieValue = result;
     }
 
+    public void ResetActiveOption()
+    {
+        this._activeOption = 0;
+    }
+
     public void Victory()
     {
-        
+        Console.Clear();
+        PlayerCharacter.GetPlayerCharacter().ModifyStat(CharacterStat.Health ,3);
+        Console.WriteLine("Restored 3 HP");
         CombatManager.GetInstance().EndCombat();
     }
 
     public void Defeat()
     {
-        
+        Console.Clear();
+        Console.WriteLine("You Lost :(");
         CombatManager.GetInstance().EndCombat();
     }
     
     public void PushToEventQueue(String evnt)
     {
         this._eventQueue.Enqueue(evnt);
+        if (this._eventQueue.Count > 2) this._eventQueue.Dequeue();
+        CombatManager.GetInstance().UpdateCombat();
+        CombatManager.GetInstance().GetCombatMenu().UpdateMenu();
     }
 }
