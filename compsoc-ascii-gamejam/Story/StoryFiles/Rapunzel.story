@@ -48,9 +48,9 @@
 46;She begins to scream at you, and walk towards you which makes you walk backwards towards the windowuntil you inevitably fall out.;47
 47;She laughs as you fall into the thorns below it blinding yourself.[EFFECT_HP_-7];48
 48;You begin to wander aimlessly through the woods until you get home.;49
-49;Due to your vision being gone, you find yourself unable to explore the woods or adventure anymore.;-1
+49;Due to your vision being gone, you find yourself unable to explore the woods or adventure anymore. You are destined to walk these woods until you take your final breath.;-1
 # Fight
 50;Character will attack gothel demanding to know where rapunzel is[ROLL_STR];{win_-1_51@lose_-1_52}
 51;Character will get an answer and kill gothel, and immediately go to find rapunzel and get married live happily ever after;-1
 52;Gather viciously attacks you, you have no means of defending yourself, in efforts of escaping you stumble to the window and fall onto the thorns growing underneath.[EFFECT_HP_-10];53
-53;Blinded you wander aimlessly until getting home where you collapse;-1
+53;Blinded you wander aimlessly until getting home where you collapse. Not long after you succumb to your injuries. Falling into a deep sleep.;-1
