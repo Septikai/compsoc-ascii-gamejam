@@ -115,7 +115,10 @@ public class StoryManager
                 string? line;
                 while ((line = streamReader.ReadLine()) != null)
                 {
-                    fileLines.Add(line);
+                    if (!line.Contains("#")) // comments help navigate the story format
+                    {
+                        fileLines.Add(line);
+                    }
                 }
             }
         }
