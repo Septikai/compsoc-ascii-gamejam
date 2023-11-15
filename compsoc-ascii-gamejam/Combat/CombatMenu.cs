@@ -121,7 +121,7 @@ public class CombatMenu
                 }
             }
             if (prevItemLength > 0) Console.WriteLine(" ".PadRight(w - prevItemLength) + "|");
-            // if (items.Count == 0) Console.WriteLine("|" + " ".PadRight(w) + "|");
+            if (items.Count == 0) Console.WriteLine("|" + " ".PadRight(w) + "|");
             for (var i = 0; i < Math.Ceiling((float) newGap / 2); i++) Console.WriteLine("|" + new String(' ', w) + "|");
             Output.PrintBoxLine();
         }
