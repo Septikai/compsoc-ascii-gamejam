@@ -25,7 +25,7 @@
 24;One day however when getting into a fight with Mother Gothel, she reveals your existence.;26
 26;This is unknown to you until you climb the tower with the last piece of rope you will need.;27
 27;When you reach the top Rapunzel is nowhere to be seen and Mother Gothel is at the top waiting.;28
-28;You have 3 options.;{run_-1_29@talk_-1_@fight_-1_}------------------------------------------------------------------------------------------------
+28;You have 3 options.;{run_-1_29@talk_-1_38@fight_-1_50}
 # Run
 29;You turn around and try to run out the window and get back down.;30
 30;However you don't realize that the rope she tricked you with is gone and fall out the window.[EFFECT_HP_-5];31
@@ -37,3 +37,20 @@
 36;She cries upon seeing you and when her tears touch your skin you find yourself regaining your vision.;37
 37;You take her home and get married, and the two of you can live happily ever after.;-1
 # Talk
+38;You begin to beg Mother Gothel to listen to you.;39
+39;You understand why she is so protective of Rapunzel and ask that if she lets you marry Rapunzel you will provide her with a life of luxury in return.;40
+40;You will do your best to provide whatever either of them want so long as she let's you marry Rapunzel as she is the only maiden you will ever love.[ROLL_CHA];{win_-1_41@lose_-1_45}
+41;Mother Gothel stares at you contemplating.;42
+42;Before finally sighing and agreeing you may marry Rapunzel as long as you agree to provide her with the space to have the most luxurious garden imagineable, that she may plant whatever she would like in.;43
+43;You nod and agree to her terms.;44
+44;She smiles and shows you to Rapunzel who you greet excitedly, and you two marry to live happily ever after.;-1
+45;Mother Gothel is apalled by the way you think you can sweet talk her.;46
+46;She begins to scream at you, and walk towards you which makes you walk backwards towards the windowuntil you inevitably fall out.;47
+47;She laughs as you fall into the thorns below it blinding yourself.[EFFECT_HP_-7];48
+48;You begin to wander aimlessly through the woods until you get home.;49
+49;Due to your vision being gone, you find yourself unable to explore the woods or adventure anymore.;-1
+# Fight
+50;Character will attack gothel demanding to know where rapunzel is[ROLL_STR];{win_-1_51@lose_-1_52}
+51;Character will get an answer and kill gothel, and immediately go to find rapunzel and get married live happily ever after;-1
+52;Gather viciously attacks you, you have no means of defending yourself, in efforts of escaping you stumble to the window and fall onto the thorns growing underneath.[EFFECT_HP_-10];53
+53;Blinded you wander aimlessly until getting home where you collapse;-1
