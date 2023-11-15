@@ -20,6 +20,20 @@ namespace compsoc_ascii_gamejam
                             var effect = storyManager.getEffect();
                             if (effect != null)
                             {
+                                if (effect[0] == "ROLL")
+                                {
+                                    Random rnd = new Random();
+                                    int num = rnd.Next(6) + 1;
+                                    if (num > 2)
+                                    {
+                                        storyManager.nextDecisionNode("win");
+                                    }
+                                    else
+                                    {
+                                        storyManager.nextDecisionNode("lose");
+                                    }
+                                    continue;
+                                }
                                 // parse effect
                             }
 

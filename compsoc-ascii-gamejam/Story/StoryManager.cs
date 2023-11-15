@@ -129,7 +129,7 @@ public class StoryManager
 
         Dictionary<int, BiLinkedStoryNode> createdNodes = new Dictionary<int, BiLinkedStoryNode>();
         var newRoot = RecursiveFileReader(ref fileLines, ref createdNodes, 0);
-        Console.WriteLine("Successfully loaded story!");
+        Console.WriteLine("Successfully loaded story! Please press ENTER to continue...");
         return newRoot;
     }
 
