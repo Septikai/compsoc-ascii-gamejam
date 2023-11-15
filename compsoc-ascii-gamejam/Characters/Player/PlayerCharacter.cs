@@ -35,4 +35,27 @@ public class PlayerCharacter : Character
 
         return statsDict;
     }
+
+    public void ModifyStat(CharacterStat stat, int val)
+    {
+        switch (stat)
+        {
+            case CharacterStat.Health:
+                this.Health += val;
+                break;
+            case CharacterStat.MaxHealth:
+                this.Health += val;
+                break;
+            case CharacterStat.Agility:
+                this.Health += val;
+                break;
+            case CharacterStat.Strength:
+                this.Health += val;
+                break;
+            case CharacterStat.Charisma:
+                this.Health += val;
+                break;
+        }
+        Console.WriteLine(stat.ToString() + " " + (val > 0 ? "increased" : "decreased") + " by " + val + "!");
+    }
 }

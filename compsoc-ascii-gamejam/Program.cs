@@ -1,5 +1,5 @@
 ﻿using compsoc_ascii_gamejam.ConsoleIO;
-using compsoc_ascii_gamejam.Stories;
+using compsoc_ascii_gamejam.Story;
 
 namespace compsoc_ascii_gamejam
 {
