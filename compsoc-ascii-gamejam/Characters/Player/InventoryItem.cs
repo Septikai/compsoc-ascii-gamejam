@@ -8,29 +8,30 @@ namespace compsoc_ascii_gamejam.Characters.Player;
 public enum InventoryItem
 {
     [Description("Hard and solid")]
-    [StrengthEffect(1)]
+    [StatEffect(CharacterStat.Strength, 1)]
     Rock,
+    
     [Description("Contains at least 2 ends")]
-    [StrengthEffect(1)]
+    [StatEffect(CharacterStat.Strength, 1)]
     Stick,
+    
     [Description("Looks pretty")]
+    [StatEffect(CharacterStat.Health, 1)]
     Flowers,
+    
     [Description("Rusted but still pointy")]
-    [StrengthEffect(2)]
+    [StatEffect(CharacterStat.Strength, 2)]
     RustedBlade,
+    
     [Description("a long vine with very sharp thorns")]
-    [StrengthEffect(2)]
+    [StatEffect(CharacterStat.Strength, 2)]
     ThornyVine
 }
 
-class StrengthEffectAttribute : Attribute
+class StatEffectAttribute(CharacterStat stat, int val) : Attribute
 {
-    public int val { get; private set; }
-
-    public StrengthEffectAttribute(int val)
-    {
-        this.val = val;
-    }
+    public CharacterStat Stat { get; private set; } = stat;
+    public int Val { get; private set; } = val;
 }
 
 
@@ -46,14 +47,14 @@ public static class InventoryItemExtension
         return attributes is { Length: > 0 } ? attributes[0].Description : source.ToString();
     }
     
-    public static int GetStrengthEffect(this InventoryItem source)
+    public static int GetStatEffect(this InventoryItem source)
     {
         FieldInfo fi = source.GetType().GetField(source.ToString());
 
-        StrengthEffectAttribute[] attributes = (StrengthEffectAttribute[]) fi.GetCustomAttributes(
-            typeof(StrengthEffectAttribute), false);
+        StatEffectAttribute[] attributes = (StatEffectAttribute[]) fi.GetCustomAttributes(
+            typeof(StatEffectAttribute), false);
 
-        return attributes is { Length: > 0 } ? attributes[0].val : 0;
+        return attributes is { Length: > 0 } ? attributes[0].Val : 0;
     }
     
     public static String ToNiceString(this InventoryItem item)
