@@ -56,6 +56,6 @@ public class PlayerCharacter : Character
                 this.Health += val;
                 break;
         }
-        Console.WriteLine(stat.ToString() + " " + (val > 0 ? "increased" : "decreased") + " by " + val + "!");
+        Console.WriteLine(stat.ToNiceString() + " " + (val > 0 ? "increased" : "decreased") + " by " + val + "!");
     }
 }
