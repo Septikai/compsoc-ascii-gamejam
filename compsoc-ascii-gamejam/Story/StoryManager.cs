@@ -1,4 +1,5 @@
 ﻿using System.Text;
+using compsoc_ascii_gamejam.Characters.Player;
 
 namespace compsoc_ascii_gamejam.Stories;
 
@@ -7,6 +8,7 @@ public class BiLinkedStoryNode
     private BiLinkedStoryNode? nextNode;
     private List<Tuple<string, BiLinkedStoryNode>>? decisions;
     private string dialogue;
+    private InventoryItem? itemReceived;
 
     public BiLinkedStoryNode(BiLinkedStoryNode? nextNode, List<Tuple<string, BiLinkedStoryNode>>? decisions, string dialogue)
     {
@@ -20,6 +22,7 @@ public class BiLinkedStoryNode
         this.nextNode = null;
         this.decisions = null;
         this.dialogue = "";
+        this.itemReceived = null;
     }
 
     public string getDialogue()
@@ -77,6 +80,16 @@ public class BiLinkedStoryNode
     {
         decisions ??= new List<Tuple<string, BiLinkedStoryNode>>();
         decisions.Add(newDecision);
+    }
+
+    public void setItem(InventoryItem? newItem)
+    {
+        itemReceived = newItem;
+    }
+
+    public InventoryItem? getItem()
+    {
+        return itemReceived;
     }
 
 }
@@ -137,11 +150,19 @@ public class StoryManager
                 var choice = choices[i].Split("_");
                 var dialogue = choice[0];
                 var nextLine = int.Parse(choice[1]);
-                //var item_given = int.Parse(choice[2]); //TODO: add items to the choice
+                InventoryItem? item_given = int.Parse(choice[2]) switch
+                {
+                    0 => InventoryItem.Rock,
+                    1 => InventoryItem.Stick,
+                    2 => InventoryItem.Flowers,
+                    3 => InventoryItem.RustedBlade,
+                    _ => null
+                };
 
                 if (workingIndex != nextLine)
                 {
                     var newNode = RecursiveFileReader(ref fileLines, ref createdNodes, nextLine);
+                    newNode.setItem(item_given);
                     if (newNode != null)
                     {
                         currentWorkingNode.addDecision(new Tuple<string, BiLinkedStoryNode>(dialogue, newNode));
