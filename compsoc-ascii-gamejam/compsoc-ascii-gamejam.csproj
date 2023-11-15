@@ -12,6 +12,15 @@
       <None Update="Story\testStory.txt">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </None>
+      <None Update="Story\StoryFiles\BoyWhoCriedWolf.story">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </None>
+      <None Update="Story\StoryFiles\Rapunzel.story">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </None>
+      <None Update="Story\StoryFiles\RedRidingHood.story">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </None>
     </ItemGroup>
 
 

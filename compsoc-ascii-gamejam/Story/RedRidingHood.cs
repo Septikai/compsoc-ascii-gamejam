@@ -97,6 +97,8 @@ public class RedRidingHood //Starting story you launch into
             Console.WriteLine("You don't have enough time and need to keep going to get to granny's. You continue on the path!");
         }
         Console.WriteLine("You continue on the path, until eventually you reach the point where the two paths would link up.");
+        RRHFinalPath();
+
     }
 
     private void RRHFastPath()
@@ -116,10 +118,15 @@ public class RedRidingHood //Starting story you launch into
         {
             Console.WriteLine("You decide it's not worth risking getting hurt, or staying on this path any longer, and continue walking until you reach the point where the two paths sink up!");
         }
+        RRHFinalPath();
+    }
+
+    private void RRHFinalPath()
+    {
         Console.WriteLine("You are on the final stretch to get to granny's house. You begin walking down the path when suddenly a wolf runs out in front of you blocking your way.");
         Console.WriteLine("You have three options. You can 'run' away, 'talk' to the wolf and try to reason with it, or you can 'fight' the wolf and not have to worry about it again");
         Console.WriteLine("Which option do you choose? Please enter any phrase that was in quotes int he previous statement!");
-        playerInput = Input.GetUserResponse(new List<String>() { "run", "talk", "fight" });
+        var playerInput = Input.GetUserResponse(new List<String>() { "run", "talk", "fight" });
         if (playerInput == "run")
         {
             /*
