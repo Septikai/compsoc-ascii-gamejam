@@ -159,6 +159,7 @@ public class StoryManager
                     1 => InventoryItem.Stick,
                     2 => InventoryItem.Flowers,
                     3 => InventoryItem.RustedBlade,
+                    4 => InventoryItem.ThornyVine,
                     _ => null
                 };
 
