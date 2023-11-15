@@ -37,9 +37,10 @@ public class Input
             input = Console.ReadLine();
             if (input is null) throw new NullReferenceException();
             var command = 
-                Commands.FirstOrDefault(kv => kv.Value.Contains(input)).Key;
+                Commands.FirstOrDefault(kv => 
+                    kv.Value.Contains(input.ToLower())).Key;
             if (command != PlayerCommands.None) HandleCommand(command);
-        } while (!validResponses.Contains(input));
+        } while (!validResponses.Contains(input.ToLower()));
 
         return input;
     }
