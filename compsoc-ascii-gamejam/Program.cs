@@ -15,7 +15,7 @@ namespace compsoc_ascii_gamejam
             Inventory.GetInventory().AddToInventory(InventoryItem.Rock, 1);
             Output.PrintInv();
             
-            // var storyManager = new StoryManager("Story\\testStory.txt");
+            var storyManager = new StoryManager("Story\\testStory.txt");
             var menu = new Menu(false, new Dictionary<string, Action>()
             {
                 { "start", () => RedRidingHood.GetInstance().Start() },

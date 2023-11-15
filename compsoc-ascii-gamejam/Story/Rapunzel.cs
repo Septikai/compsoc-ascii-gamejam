@@ -1,8 +1,4 @@
-using System.Runtime.CompilerServices;
-using System.Runtime.Intrinsics.X86;
-using compsoc_ascii_gamejam.ConsoleIO;
-
-namespace compsoc_ascii_gamejam.Stories;
+namespace compsoc_ascii_gamejam.Story;
 
 //player will access snowwhite by completeing the TALK option in RedRidingHood
 public class Rapunzel //start the story for snow white

@@ -11,7 +11,6 @@ public class CombatMenu
         { "inventory", () => CombatManager.GetInstance().GetCombat().Inventory() }
     };
     private int _activeOption = 0;
-    private bool _menuActive = false;
     private Combat _currentCombat;
     private bool _hasBeenDisplayed = false;
     private int _dieValue = 0;
@@ -23,11 +22,10 @@ public class CombatMenu
 
     public void AwaitPlayerAction()
     {
-        ConsoleKey key;
         while (this._currentCombat.IsPlayerTurn())
         {
             UpdateMenu();
-            key = Console.ReadKey(true).Key;
+            var key = Console.ReadKey(true).Key;
             ProcessKeyPress(key);
         }
     }

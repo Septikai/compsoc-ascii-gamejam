@@ -16,16 +16,15 @@ public class Menu
 
     public void DisplayMenu()
     {
-        ConsoleKey key;
         while (!this._isQuitting)
         {
             UpdateMenu();
-            key = Console.ReadKey(true).Key;
+            var key = Console.ReadKey(true).Key;
             ProcessKeyPress(key);
         }
     }
 
-    public void UpdateMenu()
+    private void UpdateMenu()
     {
         Console.Clear();
         var h = Console.WindowHeight - 3;
