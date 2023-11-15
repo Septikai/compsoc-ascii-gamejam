@@ -92,7 +92,7 @@ public class CombatManager
             var index = 0;
             foreach (var str in this._combatMenu._eventQueue)
             {
-                Console.WriteLine("|" + this._combatMenu._eventQueue.ElementAt(index++).PadRight(w) + "|");
+                Console.WriteLine("| " + this._combatMenu._eventQueue.ElementAt(index++).PadRight(w-1) + "|");
             }
             return true;
         }
