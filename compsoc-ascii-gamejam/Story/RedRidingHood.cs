@@ -65,7 +65,7 @@ public class RedRidingHood //Starting story you launch into
 
         if (playerInput == "yes")
         {
-            Console.WriteLine("FLOWERS WERE ADDED TO INVENTORY"); //add flowers to the inventory class
+            Inventory.GetInventory().AddToInventory(InventoryItem.Flowers, 1);
         }
         else if (playerInput == "no")
         {
@@ -79,7 +79,6 @@ public class RedRidingHood //Starting story you launch into
         Console.WriteLine("both paths will take you to your grandmothers house, however one while safer takes longer, but the faster path is more dangerous.");
         Console.WriteLine("Which path do you take? Please enter in 'safe' or 'fast' to decide!");
         playerInput = Input.GetUserResponse(new List<String>() { "safe", "fast" });
-        // playerStatus(yes, no, fight, run, talk, fast, safe);
         if (playerInput == "safe") RRHSafePath();
         else if (playerInput == "fast") RRHFastPath();
     }
@@ -87,11 +86,11 @@ public class RedRidingHood //Starting story you launch into
     private void RRHSafePath()
     {
         Console.WriteLine("You begin to walk down the safe but longer path. As you walk through you see some stones that look as though you could use them as little weights");
-        Console.WriteLine("Do you collect the stones? Please input 'yes' or 'no'!");
+        Console.WriteLine("Do you collect a stone? Please input 'yes' or 'no'!");
         var playerInput = Input.GetUserResponse(new List<String>() { "yes", "no" });
         if (playerInput == "yes")
         {
-            Console.WriteLine("SMOOTH STONES ADDED TO INVENTORY"); //add the stones to the inventory
+            Inventory.GetInventory().AddToInventory(InventoryItem.Rock, 1);
         }
         else if (playerInput == "no")
         {
@@ -111,7 +110,7 @@ public class RedRidingHood //Starting story you launch into
         var playerInput = Input.GetUserResponse(new List<String>() { "yes", "no" });
         if (playerInput == "yes")
         {
-            Console.WriteLine("RUSTY BLADE HAS BEEN ADDED TO INVENTORY"); //add the blade to the inventory
+            Inventory.GetInventory().AddToInventory(InventoryItem.RustedBlade, 1);
         }
         else if (playerInput == "no")
         {

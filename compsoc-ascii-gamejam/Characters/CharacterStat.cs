@@ -1,6 +1,4 @@
-﻿using System.ComponentModel;
-
-namespace compsoc_ascii_gamejam.Characters;
+﻿namespace compsoc_ascii_gamejam.Characters;
 
 public enum CharacterStat
 {
