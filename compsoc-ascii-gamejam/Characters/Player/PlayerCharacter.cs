@@ -46,10 +46,10 @@ public class PlayerCharacter : Character
             case CharacterStat.MaxHealth:
                 this.Health += val;
                 break;
-            case CharacterStat.Agility:
+            case CharacterStat.Strength:
                 this.Health += val;
                 break;
-            case CharacterStat.Strength:
+            case CharacterStat.Agility:
                 this.Health += val;
                 break;
             case CharacterStat.Charisma:

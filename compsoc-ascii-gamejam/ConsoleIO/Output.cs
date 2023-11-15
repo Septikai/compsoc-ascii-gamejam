@@ -71,7 +71,7 @@ public static class Output
         return toCheck.Length > Console.WindowWidth;
     }
 
-    private static void PrintBoxLine()
+    public static void PrintBoxLine()
     {
         Console.WriteLine("+" + new String('-', Console.WindowWidth - 2) + "+");
     }
@@ -123,6 +123,13 @@ public static class Output
         output = output + new String(' ', Console.WindowWidth - output.Length - 1) + "|\n" + invString;
         PrintBoxLine();
         Console.WriteLine(output);
+        PrintBoxLine();
+    }
+
+    public static void PrintCombat(Combat.Combat combat)
+    {
+        Console.Clear();
+        
         PrintBoxLine();
     }
 }

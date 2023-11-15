@@ -54,6 +54,14 @@ public static class Input
                 Output.PrintInv();
                 break;
             case PlayerCommands.Pause:
+                var menu = new Menu(true, new Dictionary<string, Action>()
+                {
+                    { "resume", () => Console.WriteLine("RESTART CURRENT DIALOGUE OPTION") },
+                    { "save", () => Console.WriteLine("Saved") },
+                    { "load", () => Console.WriteLine("Loaded") },
+                    { "quit", () => Environment.Exit(1) }
+                });
+                menu.DisplayMenu();
                 break;
             case PlayerCommands.Save:
                 break;
