@@ -35,7 +35,7 @@
 31;You begin to wave your arms at him, while you run until you reach the top of the hill and notice that you have lost the wolf.;32
 32;You sit down and explain what has happened...[LOAD_Story\\StoryFiles\\BoyWhoCriedWolf.story];-1
 # Talk
-33;You stare at the wolf for a moment before you ask what it wants.[ROLL_CHA];{win_-1_34@lose_-1_3333}
+33;You stare at the wolf for a moment before you ask what it wants.[ROLL_CHA];{win_-1_34@lose_-1_42}
 34;The wolf stares at you before sighing.;35
 35;It apologizes and explains that it intended to get you lost so that you could starve and be an easy dinner.;36
 36;However you're simply too kind, and it can't bear harming you.;37

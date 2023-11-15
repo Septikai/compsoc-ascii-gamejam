@@ -42,6 +42,11 @@ public class BiLinkedStoryNode
             return null;
         }
 
+        if (_decisions == null)
+        {
+            return null;
+        }
+
         List<string> decisionList = new List<string>();
 
         foreach (var value in _decisions)
@@ -200,7 +205,7 @@ public class StoryManager
     {
         if (_root.GetNextNode() != null)
         {
-            _root = _root.GetNextNode();    
+            _root = _root.GetNextNode();
         }
     }
 
