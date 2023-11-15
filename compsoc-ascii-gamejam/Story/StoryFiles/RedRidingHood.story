@@ -12,7 +12,7 @@
 10;You begin to walk down the safe but longer path. As you walk through you see some stones that look as though you could use them as little weights;11
 11;Do you collect a stone?;{yes_0_13@no_-1_12}
 12;You don't have enough time and need to keep going to get to granny's. You continue on the path!;13
-13;You continue on the path, until eventually you reach the point where the two paths would link up.;-1
+13;You continue on the path, until eventually you reach the point where the two paths would link up.;20
 # Fast path
 14;You begin down the darker path which isn't as smooth, and has some thorns along it.;15
 15;As you're walking you accidentally trip over a tree root that is crossing the path and skin your knee.[EFFECT_HP_-1];16

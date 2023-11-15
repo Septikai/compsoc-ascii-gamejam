@@ -116,7 +116,7 @@ public class RedRidingHood //Starting story you launch into
         }
         else if (playerInput == "no")
         {
-            Console.WriteLine("You decide it's not worth risking getting hurt, or staying on this path any longer, and continue walking until you reach the point where the two paths sink up!");
+            Console.WriteLine("You dnecide it's not worth risking getting hurt, or staying on this path ay longer, and continue walking until you reach the point where the two paths sink up!");
         }
         RRHFinalPath();
     }
