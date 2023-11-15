@@ -15,7 +15,11 @@ public enum InventoryItem
     Flowers,
     [Description("Rusted but still pointy")]
     [StrengthEffect(2)]
-    RustedBlade
+    RustedBlade,
+
+    [Description("a long vine with very sharp thorns")]
+    [StrengthEffect(2)]
+    ThornyVine
 }
 
 class StrengthEffectAttribute : Attribute
