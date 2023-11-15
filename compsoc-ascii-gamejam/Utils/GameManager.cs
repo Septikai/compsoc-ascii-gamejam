@@ -2,7 +2,7 @@
 
 public class GameManager
 {
-    private static readonly GameManager Instance = new GameManager();
+    private static readonly GameManager Instance = new();
     private int _playerScore = 0;
 
     private GameManager()

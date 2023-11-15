@@ -2,7 +2,7 @@
 
 public class PlayerCharacter : Character
 {
-    private static readonly PlayerCharacter Instance = new PlayerCharacter();
+    private static readonly PlayerCharacter Instance = new();
 
     private PlayerCharacter()
     {

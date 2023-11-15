@@ -10,9 +10,7 @@ public enum PlayerCommands
     Quit
 }
 
-
-
-public class Input
+public static class Input
 {
     private static readonly Dictionary<PlayerCommands, List<String>> Commands = GetAllPlayerCommands();
 

@@ -1,69 +1,57 @@
 ﻿namespace compsoc_ascii_gamejam.Characters.Player;
 
-public enum Items
-{
-    Rock,
-    Stick
-}
-
 public class Inventory
 {
-    // <ID, <Name, Description>>
-    private static readonly Dictionary<Items, Tuple<string, string>> ItemDescription =
-        new Dictionary<Items, Tuple<string, string>>()
-        {
-            {
-                Items.Rock, new Tuple<string, string>("Rock", "hard and solid")
-            },
-            {
-                Items.Stick, new Tuple<string, string>("Stick", "Contains at least 2 ends")
-            }
-        };
+    private static readonly Inventory Instance = new();
 
-    private readonly Dictionary<Items, uint> _inventory = new Dictionary<Items, uint>();
+    private readonly Dictionary<InventoryItem, uint> _inventoryContents = new();
 
-    public void AddToInventory(Items item)
+    private Inventory()
     {
-        if (_inventory.TryGetValue(item, out var value))
+        
+    }
+
+    public static Inventory GetInventory()
+    {
+        return Instance;
+    }
+
+    public Dictionary<InventoryItem, uint> GetContents()
+    {
+        return this._inventoryContents;
+    }
+
+    public void AddToInventory(InventoryItem item, uint amount, bool silent = false)
+    {
+        if (_inventoryContents.TryGetValue(item, out var value))
         {
-            _inventory[item] = ++value;
+            _inventoryContents[item] = value + amount;
         }
         else
         {
-            _inventory.Add(item, 1);
+            _inventoryContents.Add(item, amount);
         }
+        if (!silent) Console.WriteLine("Added " + amount + " " + item.ToNiceString() + " to your inventory!");
     }
 
-    public void SubtractFromInventory(Items item)
+    public void RemoveFromInventory(InventoryItem item, uint amount, bool silent = false)
     {
-        if (_inventory.TryGetValue(item, out var value))
+        if (_inventoryContents.TryGetValue(item, out var value))
         {
             if (value > 1)
             {
-                _inventory[item] = --value;
+                _inventoryContents[item] = amount <= value ? value - amount : 0;
             }
             else
             {
-                _inventory.Remove(item);
+                _inventoryContents.Remove(item);
             }
+            if (!silent) Console.WriteLine("Removed " + (amount <= value ? amount : value) + " " + item.ToNiceString() +
+                                           " from your inventory!");
         }
         else
         {
-            Console.WriteLine("No such item found");
+            Console.WriteLine("You had no " + item.ToNiceString() + " to remove!");
         }
-    }
-
-    public void CheckInventory(Items item)
-    {
-        Console.WriteLine(_inventory.TryGetValue(item, out var value)
-            ? $"Currently there are: {value.ToString()} {ItemDescription[item].Item1}"
-            : $"There are no {ItemDescription[item].Item1} in the inventory");
-    }
-
-    public void GetDescription(Items item)
-    {
-        Console.WriteLine(_inventory.TryGetValue(item, out var value)
-            ? $"{ItemDescription[item].Item1} : {ItemDescription[item].Item2}"
-            : $"There are no {ItemDescription[item].Item1} in the inventory");
     }
 }
