@@ -47,6 +47,16 @@ public static class InventoryItemExtension
         return attributes is { Length: > 0 } ? attributes[0].Description : source.ToString();
     }
     
+    public static CharacterStat GetStatType(this InventoryItem source)
+    {
+        FieldInfo fi = source.GetType().GetField(source.ToString());
+
+        StatEffectAttribute[] attributes = (StatEffectAttribute[]) fi.GetCustomAttributes(
+            typeof(StatEffectAttribute), false);
+
+        return attributes is { Length: > 0 } ? attributes[0].Stat : 0;
+    }
+    
     public static int GetStatEffect(this InventoryItem source)
     {
         FieldInfo fi = source.GetType().GetField(source.ToString());
@@ -56,7 +66,7 @@ public static class InventoryItemExtension
 
         return attributes is { Length: > 0 } ? attributes[0].Val : 0;
     }
-    
+
     public static String ToNiceString(this InventoryItem item)
     {
         switch (item)

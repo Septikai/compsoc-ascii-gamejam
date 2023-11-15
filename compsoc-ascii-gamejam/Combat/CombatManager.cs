@@ -49,13 +49,18 @@ public class CombatManager
         }
     }
 
+    public void EndCombat()
+    {
+        
+    }
+
     private void UpdateCombat()
     {
         Console.Clear();
         var h = Console.WindowHeight - 3;
-        if (4 < h)
+        var gap = (h - 4) / 5;
+        if (h > 4 && gap - 2 >= 5)
         {
-            var gap = (h - 4) / 5;
             var w = Console.WindowWidth - 2;
             var wPadding = new List<int>()
             {
