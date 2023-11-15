@@ -48,8 +48,10 @@ public static class Input
         switch (command)
         {
             case PlayerCommands.Stats:
+                Output.PrintStats();
                 break;
             case PlayerCommands.Inventory:
+                Output.PrintInv();
                 break;
             case PlayerCommands.Pause:
                 break;

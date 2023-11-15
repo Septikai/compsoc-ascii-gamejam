@@ -83,7 +83,7 @@ public static class Output
         var invString = "";
         foreach (var item in invDict.Select((dictItem, i) => new { i, dictItem }))
         {
-            var toAdd = item.dictItem.Key + " (" + item.dictItem.Value + "): " + 
+            var toAdd = item.dictItem.Key.ToNiceString() + " (" + item.dictItem.Value + "): " + 
                         item.dictItem.Key.GetDescription();
             var toAddQueue = new List<string>();
             var currentLine = 0;
