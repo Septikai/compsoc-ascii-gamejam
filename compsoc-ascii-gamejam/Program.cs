@@ -72,7 +72,7 @@ namespace compsoc_ascii_gamejam
                         Inventory.GetInventory().AddToInventory(InventoryItem.Stick, 2);
                         Inventory.GetInventory().AddToInventory(InventoryItem.Rock, 1);
                         Inventory.GetInventory().AddToInventory(InventoryItem.RustedBlade, 1);
-                        CombatManager.GetInstance().InitiateCombat(new NonPlayerCharacter(6, 6, 3, 3));
+                        CombatManager.GetInstance().InitiateCombat(new NonPlayerCharacter(10, 5, 3, 3));
                     }
                 },
                 { "quit", () => Environment.Exit(1) }
