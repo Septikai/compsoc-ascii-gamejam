@@ -1,4 +1,6 @@
-﻿using compsoc_ascii_gamejam.ConsoleIO;
+﻿using compsoc_ascii_gamejam.Characters.NonPlayerCharacter;
+using compsoc_ascii_gamejam.Combat;
+using compsoc_ascii_gamejam.ConsoleIO;
 using compsoc_ascii_gamejam.Story;
 
 namespace compsoc_ascii_gamejam
@@ -56,6 +58,7 @@ namespace compsoc_ascii_gamejam
                         }
                     }
                 },
+                { "fight", () => CombatManager.GetInstance().InitiateCombat(new NonPlayerCharacter(6, 6, 3, 3)) },
                 { "quit", () => Environment.Exit(1) }
             });
             menu.DisplayMenu();
