@@ -233,13 +233,13 @@ public class StoryManager
             var effect = result[^1].Replace("]", "").Split("_");
             if (effect[0] == "LOAD")
             {
-                Console.WriteLine($"Loading next story: {effect[1]}");
+                // Console.WriteLine($"Loading next story: {effect[1]}");
                 _root = LoadFile(effect[1]);
                 return effect;
             }
             else
             {
-                Console.WriteLine($"Effect applied: {effect[1]}");
+                // Console.WriteLine($"Effect applied: {effect[1]}");
                 return effect;
             }
         }

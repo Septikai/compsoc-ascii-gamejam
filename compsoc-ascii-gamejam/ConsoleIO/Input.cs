@@ -21,7 +21,6 @@ public static class Input
             { PlayerCommands.Stats, new List<String>() {"stats", "stat", "statistic", "statistics"} },
             { PlayerCommands.Inventory, new List<String>() {"inv", "inventory"} },
             { PlayerCommands.Pause, new List<String>() {"pause"} },
-            { PlayerCommands.Save, new List<String>() {"save"} },
             { PlayerCommands.Quit, new List<String>() {"quit"} }
         };
     }
@@ -57,13 +56,9 @@ public static class Input
                 var menu = new Menu(true, new Dictionary<string, Action>()
                 {
                     { "resume", () => Console.WriteLine("RESTART CURRENT DIALOGUE OPTION") },
-                    { "save", () => Console.WriteLine("Saved") },
-                    { "load", () => Console.WriteLine("Loaded") },
                     { "quit", () => Environment.Exit(1) }
                 });
                 menu.DisplayMenu();
-                break;
-            case PlayerCommands.Save:
                 break;
             case PlayerCommands.Quit:
                 break;
