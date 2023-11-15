@@ -1,0 +1,3 @@
+﻿0;Hello World;2
+1;Choice!;{Hello_0_-1@World_2_-1}
+2;Reset choice;{Choice_1_0@Hello_0_-1}
