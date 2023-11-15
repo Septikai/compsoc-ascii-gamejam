@@ -44,7 +44,7 @@ public class Combat
 
     public void PassTurn()
     {
-        System.Threading.Thread.Sleep(2000);
+        System.Threading.Thread.Sleep(1000);
         this._isPlayerTurn = !this._isPlayerTurn;
     }
 
