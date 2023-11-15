@@ -52,7 +52,7 @@ public class CombatManager
 
     public void EndCombat()
     {
-
+        
     }
 
     public bool UpdateCombat()

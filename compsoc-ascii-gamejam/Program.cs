@@ -1,6 +1,8 @@
 ﻿using compsoc_ascii_gamejam.Characters.NonPlayerCharacter;
 using compsoc_ascii_gamejam.Characters.Player;
 using compsoc_ascii_gamejam.Combat;
+using compsoc_ascii_gamejam.Characters.NonPlayerCharacter;
+using compsoc_ascii_gamejam.Combat;
 using compsoc_ascii_gamejam.ConsoleIO;
 using compsoc_ascii_gamejam.Story;
 
@@ -25,6 +27,12 @@ namespace compsoc_ascii_gamejam
                             {
                                 if (effect[0] == "ROLL")
                                 {
+                                    if (effect[1] == "STR")
+                                    {
+                                        CombatManager.GetInstance().InitiateCombat(new NonPlayerCharacter(6,6,3,3));
+                                        storyManager.nextDecisionNode("win");
+                                        continue;
+                                    }
                                     Random rnd = new Random();
                                     int num = rnd.Next(6) + 1;
                                     if (num > 2)

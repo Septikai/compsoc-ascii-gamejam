@@ -22,7 +22,7 @@
 19;You decide it's not worth risking getting hurt, or staying on this path any longer, and continue walking until you reach the point where the two paths sink up!;20
 20;You are on the final stretch to get to granny's house. You begin walking down the path when suddenly a wolf runs out in front of you blocking your way.;21
 21;You have three options. You can 'run' away, 'talk' to the wolf and try to reason with it, or you can 'fight' the wolf and not have to worry about it again;22
-22;Which option do you choose?;{run_-1_23@talk_-1_33@fight_-1_25}
+22;Which option do you choose?;{run_-1_23@talk_-1_33@fight_-1_50}
 # Run
 23;You turn around and begin to run away from the wolf. You don't pay attention where you run, anywhere will work as long as it gets you away from the wolf[ROLL_AGI];{win_-1_28@lose_-1_24}
 24;You continue to run however the wolf grabs your leg making you fall.;25
@@ -53,4 +53,4 @@
 48;You eventually hear a beautiful singing voice in the distance.;49
 49;You decide to follow it hoping you can ask the person how to get back home.[LOAD_Story\\StoryFiles\\Rapunzel.story];-1
 # Fight
-50;This is a placeholder, the fight is still not implemented;-1
+50;This is a placeholder, the fight is still not implemented[ROLL_STR];31

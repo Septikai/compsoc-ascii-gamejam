@@ -231,7 +231,7 @@ public class CombatMenu
     {
         Console.Clear();
         Console.WriteLine("You Lost :(");
-        CombatManager.GetInstance().EndCombat();
+        //CombatManager.GetInstance().EndCombat();
     }
     
     public void PushToEventQueue(String evnt)
