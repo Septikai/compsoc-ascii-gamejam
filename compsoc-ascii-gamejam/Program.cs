@@ -18,7 +18,7 @@ namespace compsoc_ascii_gamejam
                 {
                     "start", () =>
                     {
-                        storyManager = new StoryManager("Story/StoryFiles/RedRidingHood.story");
+                        storyManager = new StoryManager("Story/StoryFiles/RedRidingHood.gamestory");
                         while (true)
                         {
                             Console.WriteLine(storyManager.getDialogue());

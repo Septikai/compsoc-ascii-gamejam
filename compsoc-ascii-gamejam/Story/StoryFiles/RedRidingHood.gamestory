@@ -28,12 +28,12 @@
 24;You continue to run however the wolf grabs your leg making you fall.;25
 25;You kick at it a few times until eventually it releases your leg and you run off.[EFFECT_HP_-4];26
 26;Fueled by pure adrenaline you continue to run, until you see the shephard boy at the top of a hill.;27
-27;You run towards him and once you reach the top of the hill you sit down, and explain to him what just occured.[LOAD_Story\\StoryFiles\\BoyWhoCriedWolf.story];-1
+27;You run towards him and once you reach the top of the hill you sit down, and explain to him what just occured.[LOAD_Story\\StoryFiles\\BoyWhoCriedWolf.gamestory];-1
 28;You refuse to turn around to see if you've lost the wolf.;29
 29;You make turns when you can to try and disorient it without realizing you're disorienting yourself.;30
 30;You simply keep running until eventually you see the shephard boy on a hill.;31
 31;You begin to wave your arms at him, while you run until you reach the top of the hill and notice that you have lost the wolf.;32
-32;You sit down and explain what has happened...[LOAD_Story\\StoryFiles\\BoyWhoCriedWolf.story];-1
+32;You sit down and explain what has happened...[LOAD_Story\\StoryFiles\\BoyWhoCriedWolf.gamestory];-1
 # Talk
 33;You stare at the wolf for a moment before you ask what it wants.[ROLL_CHA];{win_-1_34@lose_-1_42}
 34;The wolf stares at you before sighing.;35
@@ -43,7 +43,7 @@
 38;You sigh and continue you're walk to granny's where you will give give her the wine and fruits.;39
 39;She thanks you and sends you home.;40
 40;While on your way home however you hear a beautiful singing voice that you feel compelled to follow.;41
-41;You begin to follow it until you reach a tower[LOAD_Story\\StoryFiles\\Rapunzel.story];-1
+41;You begin to follow it until you reach a tower[LOAD_Story\\StoryFiles\\Rapunzel.gamestory];-1
 42;The wolf starts explaining how it was out exploring when it got lost and know it can't find it's den.;43
 43;It looks to be a rather young wolf, and so you decide to trust it.;44
 44;You begin to help the wolf find it's home asking questions like what it looks like, and any identifying land marks, however the wolf seems to not know anything.;45
@@ -51,6 +51,6 @@
 46;You begin to realize you have no idea where you are, and realize you have gotten lost in the woods.;47
 47;You attempt to retrace your steps, however you're simply too far into the woods at this point.;48
 48;You eventually hear a beautiful singing voice in the distance.;49
-49;You decide to follow it hoping you can ask the person how to get back home.[LOAD_Story\\StoryFiles\\Rapunzel.story];-1
+49;You decide to follow it hoping you can ask the person how to get back home.[LOAD_Story\\StoryFiles\\Rapunzel.gamestory];-1
 # Fight
 50;This is a placeholder, the fight is still not implemented[ROLL_STR];{win_-1_30@lose_-1_1}
